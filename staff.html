@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>الاستقبال — التحقق من القسائم</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FBF6F7;--card:#fff;--ink:#2A1A20;--muted:#8A7A80;--line:#EFE3E6;--ac:#FF8DAA;--ok:#1F9D55;--bad:#D64545;--warn:#C98A12}
+*{box-sizing:border-box}html,body{margin:0}
+body{font-family:Tajawal,sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.6}
+.wrap{max-width:560px;margin:auto;padding:22px 16px 60px}
+h1{font-size:22px;margin:0 0 2px}.sub{color:var(--muted);margin:0 0 18px;font-size:14px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:14px}
+input{font:inherit;width:100%;padding:13px 14px;border:1.5px solid var(--line);border-radius:13px;background:#fff;outline:none}
+input:focus{border-color:var(--ac)}
+.big{font-size:24px;font-weight:800;letter-spacing:.12em;text-align:center;direction:ltr;text-transform:uppercase}
+.btn{font:inherit;font-weight:800;border:0;border-radius:13px;padding:13px 16px;cursor:pointer;background:var(--ink);color:#fff;width:100%}
+.btn.ac{background:var(--ac);color:#2A1A20}.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}.btn.sm{width:auto;padding:8px 12px;font-size:13px}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.res{border-radius:18px;padding:18px;margin-top:14px;border:1.5px solid}
+.res.ok{border-color:var(--ok);background:#EFFAF3}.res.bad{border-color:var(--bad);background:#FDF0F0}.res.warn{border-color:var(--warn);background:#FFF8EA}
+.res h2{margin:0 0 8px;font-size:19px;display:flex;align-items:center;gap:8px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14px;margin:10px 0}
+.kv b{color:var(--muted);font-weight:600}
+.used{list-style:none;padding:0;margin:0}
+.used li{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+.used li:last-child{border:0}.used code{font-weight:800;direction:ltr}
+.stats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}.stats span{background:var(--bg);border:1px solid var(--line);border-radius:99px;padding:4px 10px;font-size:12.5px}
+.hide{display:none!important}
+#toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(30px);background:#111;color:#fff;padding:11px 18px;border-radius:12px;font-weight:600;opacity:0;transition:.25s;z-index:999}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>التحقق من القسائم</h1>
+  <p class="sub" id="sname">صفحة خاصة بالاستقبال</p>
+
+  <div class="panel" id="lock">
+    <p style="margin:0 0 10px">أدخلي الرمز السري (نفس رمز لوحة الخصومات)</p>
+    <input type="password" id="pin" inputmode="numeric" class="big">
+    <button class="btn" id="enter" style="margin-top:10px">دخول</button>
+  </div>
+
+  <div id="main" class="hide">
+    <div class="panel">
+      <label style="font-weight:700;font-size:14px">رقم القسيمة (من رسالة الواتساب)</label>
+      <input id="ref" class="big" placeholder="PR-XXXXXX" autocomplete="off" style="margin:8px 0 10px">
+      <button class="btn ac" id="check">تحقق</button>
+      <div id="out"></div>
+    </div>
+    <div class="panel">
+      <div class="row" style="justify-content:space-between;margin-bottom:8px"><b>القسائم المستخدمة على هذا الجهاز</b><button class="btn ghost sm" id="csv">نسخ القائمة</button></div>
+      <div class="stats" id="stats"></div>
+      <ul class="used" id="used"></ul>
+      <p class="sub" style="margin:10px 0 0;font-size:12.5px">القائمة محفوظة على هذا الجهاز فقط. استخدموا نفس الجهاز في الاستقبال دائمًا.</p>
+    </div>
+  </div>
+</div>
+<script src="shared.js"></script>
+<script>
+let CFG;const usedKey=()=>'staff_used_'+CFG.campaignId;const used=()=>LS.get(usedKey(),[]);
+function renderUsed(){const L=used();$('#used').innerHTML=L.length?L.slice().reverse().map(u=>`<li><span><code>${esc(u.ref)}</code> · ${esc(u.title||'')}${u.card?` · بطاقة ${esc(u.card)}`:''}</span><span style="color:var(--muted)">${new Date(u.at).toLocaleDateString('ar-SA-u-ca-gregory')}</span></li>`).join(''):'<li style="color:var(--muted)">ما فيه قسائم مستخدمة للحين</li>';
+  const by={};L.forEach(u=>by[u.title]=(by[u.title]||0)+1);$('#stats').innerHTML=`<span>المجموع: ${L.length}</span>`+Object.entries(by).map(([k,v])=>`<span>${esc(k)}: ${v}</span>`).join('')}
+function check(){const r=parseRef(CFG,$('#ref').value);const out=$('#out');
+  if(!r.ok){out.innerHTML=`<div class="res bad"><h2>✗ رقم غير صحيح</h2><p style="margin:0">${r.why==='format'?'الرقم ناقص أو فيه حروف غلط. تأكدي من نسخه من الرسالة.':'هذا الرقم ما صدر من صفحة الخصومات، أو من حملة سابقة.'}</p></div>`;return}
+  const o=r.offer,prev=used().find(u=>u.ref===r.ref),exp=o?offerExpiry(CFG,o):null,expired=exp&&new Date()>exp;
+  const cls=prev?'bad':(expired||!o)?'warn':'ok';
+  out.innerHTML=`<div class="res ${cls}"><h2>${prev?'⚠️ مستخدمة من قبل':expired?'⚠️ القسيمة منتهية':!o?'⚠️ العرض محذوف':'✓ قسيمة صحيحة'}</h2>
+    <div class="kv"><b>الرقم</b><span dir="ltr" style="text-align:right">${esc(r.ref)}</span><b>العرض</b><span>${o?esc(o.value+' — '+o.title):'عرض رقم '+r.n+' (غير موجود حاليًا)'}</span>
+    ${o&&o.desc?`<b>الشرط</b><span>${esc(o.desc)}</span>`:''}${o&&o.code?`<b>الكود</b><span dir="ltr" style="text-align:right">${esc(o.code)}</span>`:''}
+    <b>صدرت</b><span>${fmtDate(r.issued)}</span>${exp?`<b>الصلاحية</b><span>${expired?'انتهت ':'حتى '}${fmtDate(exp)}</span>`:''}
+    ${prev?`<b>استُخدمت</b><span>${new Date(prev.at).toLocaleString('ar-SA-u-ca-gregory')}${prev.card?' · بطاقة '+esc(prev.card):''}</span>`:''}</div>
+    ${prev?'':`<input id="card" placeholder="رقم البطاقة المستلمة (اختياري)" inputmode="numeric" style="margin:6px 0 10px"><button class="btn" id="use">تم استلام البطاقة — سجّلي القسيمة كمستخدمة</button>`}</div>`;
+  const u=$('#use');if(u)u.onclick=()=>{const L=used();L.push({ref:r.ref,n:r.n,title:o?o.title:'',card:$('#card').value.trim(),at:Date.now()});LS.set(usedKey(),L);toast('تم التسجيل ✓');check();renderUsed()}}
+$('#check').onclick=check;$('#ref').onkeydown=e=>{if(e.key==='Enter')check()};
+$('#csv').onclick=async()=>{const L=used();const t='رقم القسيمة,العرض,رقم البطاقة,التاريخ\n'+L.map(u=>[u.ref,u.title,u.card,new Date(u.at).toISOString()].join(',')).join('\n');toast(await copyText(t)?'انسخت القائمة ✓':'ما قدرت أنسخ')};
+async function enter(){const h=await sha256($('#pin').value);if(h===CFG.adminPin||'plain:'+$('#pin').value===CFG.adminPin){SS.set('staff_ok','1');open_()}else toast('الرمز غلط')}
+function open_(){$('#lock').classList.add('hide');$('#main').classList.remove('hide');renderUsed();$('#ref').focus()}
+$('#enter').onclick=enter;$('#pin').onkeydown=e=>{if(e.key==='Enter')enter()};
+(async()=>{CFG=await loadConfig(false);$('#sname').textContent=CFG.salonName+' — صفحة خاصة بالاستقبال';document.documentElement.style.setProperty('--ac',CFG.theme.accent);if(SS.get('staff_ok')==='1')open_()})();
+</script>
+</body>
+</html>

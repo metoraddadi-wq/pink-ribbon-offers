@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#24161C">
+<title>خصمك الخاص</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=El+Messiri:wght@700&family=Almarai:wght@400;700;800&family=Lora:wght@600&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;background:#24161C}
+
+.cust{--cbg:#24161C;--cfg:#FBEFF2;--cac:#E8A9B8;--ac2:color-mix(in srgb,var(--cac) 55%,#fff);--line:color-mix(in srgb,var(--cfg) 12%,transparent);--soft:color-mix(in srgb,var(--cfg) 6%,transparent);
+  position:relative;min-height:100vh;background:var(--cbg);color:var(--cfg);font-family:"Tajawal",sans-serif;overflow-x:hidden;isolation:isolate}
+.cust *{box-sizing:border-box}
+.cx-bg{position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(60% 40% at 85% -5%,color-mix(in srgb,var(--cac) 38%,transparent),transparent 70%),
+  radial-gradient(55% 35% at 0% 30%,color-mix(in srgb,var(--cac) 16%,transparent),transparent 70%),
+  radial-gradient(70% 40% at 60% 110%,color-mix(in srgb,var(--cac) 22%,transparent),transparent 70%),var(--cbg)}
+.cx-bg::after{content:"";position:absolute;inset:0;opacity:.07;background-image:radial-gradient(var(--cfg) .7px,transparent .8px);background-size:22px 22px;mask-image:linear-gradient(#000,transparent 60%)}
+.cx-in{max-width:480px;margin:auto;padding:max(26px,env(safe-area-inset-top)) 18px 40px}
+.rv{opacity:0;transform:translateY(16px);animation:rv .7s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:var(--d,0s)}
+@keyframes rv{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.rv{animation:none;opacity:1;transform:none}}
+/* hero */
+.cx-hero{text-align:center;padding:8px 0 4px}
+.cx-mark{width:96px;height:96px;margin:0 auto 14px;display:grid;place-items:center;position:relative}
+.cx-mark::before{content:"";position:absolute;inset:-14px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--cac) 35%,transparent),transparent 65%);filter:blur(4px);animation:pulse 4s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.08);opacity:.75}}
+.cx-mark img{max-width:100%;max-height:100%;position:relative}
+.cx-mark.wide{width:min(210px,56vw);height:auto;margin-bottom:18px}.cx-mark.wide::before{inset:-26px -10px}
+.cx-mark svg.wide{width:100%;height:auto}
+.cx-en2{font-size:19px;font-weight:600;letter-spacing:.02em;color:var(--ac2);margin-top:2px;direction:ltr}
+.cx-mark svg{width:72px;height:auto;position:relative;filter:drop-shadow(0 8px 18px color-mix(in srgb,var(--cac) 45%,transparent))}
+.cx-en{font-family:"Cormorant Garamond","Playfair Display",serif;letter-spacing:.42em;font-size:12px;font-weight:600;color:var(--ac2);text-transform:uppercase;margin-bottom:4px;padding-inline-start:.42em}
+.cx-name{font-family:"El Messiri",serif;font-weight:700;font-size:34px;line-height:1.2;margin:0;background:linear-gradient(180deg,var(--cfg),color-mix(in srgb,var(--cfg) 70%,var(--cac)));-webkit-background-clip:text;background-clip:text;color:transparent}
+.cx-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:14px}
+.cx-badges span{font-size:12px;font-weight:600;padding:5px 11px;border-radius:99px;border:1px solid var(--line);background:var(--soft);color:color-mix(in srgb,var(--cfg) 85%,transparent);backdrop-filter:blur(6px)}
+/* gift banner */
+.cx-gift{position:relative;margin:26px 0 22px;border-radius:24px;padding:24px 22px 22px;overflow:hidden;
+  background:linear-gradient(135deg,color-mix(in srgb,var(--cac) 30%,var(--cbg)),color-mix(in srgb,var(--cac) 8%,var(--cbg)) 60%);border:1px solid color-mix(in srgb,var(--cac) 35%,transparent);
+  box-shadow:0 20px 50px -20px color-mix(in srgb,var(--cac) 45%,transparent),inset 0 1px 0 color-mix(in srgb,#fff 18%,transparent)}
+.cx-gift::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,color-mix(in srgb,#fff 16%,transparent) 45%,transparent 60%);transform:translateX(-120%);animation:sheen 5s ease-in-out 1.2s infinite}
+@keyframes sheen{40%,100%{transform:translateX(120%)}}
+.cx-gift .rib{position:absolute;top:0;left:34px;width:16px;height:100%;background:color-mix(in srgb,var(--cac) 55%,transparent);opacity:.35}
+.cx-gift .rib2{position:absolute;top:44px;left:0;right:0;height:16px;background:color-mix(in srgb,var(--cac) 55%,transparent);opacity:.25}
+.cx-gift .k{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:800;letter-spacing:.04em;color:var(--cbg);background:var(--ac2);padding:4px 10px;border-radius:99px;position:relative}
+.cx-gift h1{font-family:"El Messiri",serif;font-size:27px;line-height:1.3;margin:14px 0 6px;position:relative;color:var(--cfg)}
+.cx-gift p{margin:0;font-size:14.5px;line-height:1.7;opacity:.82;position:relative}
+/* section title */
+.cx-st{display:flex;align-items:baseline;justify-content:space-between;margin:6px 2px 12px}
+.cx-st b{font-family:"El Messiri",serif;font-size:20px}
+.cx-st small{font-size:12px;opacity:.65}
+/* ticket offers */
+.tk{all:unset;box-sizing:border-box;display:flex;align-items:stretch;width:100%;margin-bottom:12px;cursor:pointer;border-radius:20px;position:relative;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--cfg) 8%,transparent),color-mix(in srgb,var(--cfg) 3%,transparent));border:1px solid var(--line);
+  transition:transform .25s,box-shadow .25s,border-color .25s;-webkit-tap-highlight-color:transparent}
+.tk:hover,.tk:focus-visible{transform:translateY(-3px);border-color:color-mix(in srgb,var(--cac) 55%,transparent);box-shadow:0 18px 40px -18px color-mix(in srgb,var(--cac) 60%,transparent)}
+.tk:active{transform:scale(.985)}
+.tk-v{flex:none;width:108px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px 6px;border-radius:19px 0 0 19px;order:2;
+  background:linear-gradient(160deg,var(--ac2),var(--cac));color:var(--cbg);position:relative}
+.tk-v b{font-size:30px;font-weight:800;line-height:1;letter-spacing:-.02em;direction:ltr}
+.tk-v small{font-size:12.5px;font-weight:700;margin-top:6px;opacity:.85}
+.tk-cut{order:1;flex:none;width:0;position:relative;border-left:2px dashed color-mix(in srgb,var(--cfg) 18%,transparent);margin:12px 0}
+.tk-cut::before,.tk-cut::after{content:"";position:absolute;left:-10px;width:18px;height:18px;border-radius:50%;background:var(--cbg)}
+.tk-cut::before{top:-22px}.tk-cut::after{bottom:-22px}
+.tk-b{order:0;flex:1;padding:16px 18px;display:flex;flex-direction:column;justify-content:center;gap:4px;min-width:0}
+.tk-t{font-weight:800;font-size:17px}
+.tk-d{font-size:13px;opacity:.68;line-height:1.5}
+.tk-go{margin-top:8px;display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:800;color:var(--ac2)}
+.tk-go svg{width:14px;height:14px}
+/* how it works */
+.cx-how{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:24px 0 8px}
+.cx-how div{text-align:center;padding:14px 6px;border-radius:16px;background:var(--soft);border:1px solid var(--line);font-size:12.5px;line-height:1.5}
+.cx-how i{display:grid;place-items:center;width:38px;height:38px;margin:0 auto 8px;border-radius:12px;background:color-mix(in srgb,var(--cac) 18%,transparent);color:var(--ac2)}
+.cx-how i svg{width:19px;height:19px}
+/* info card */
+.cx-info{margin-top:18px;border-radius:20px;background:var(--soft);border:1px solid var(--line);overflow:hidden}
+.cx-info .r{display:flex;gap:12px;align-items:center;padding:13px 16px;font-size:14px;color:var(--cfg);text-decoration:none}
+.cx-info .r+.r{border-top:1px solid var(--line)}
+.cx-info .r svg{width:18px;height:18px;flex:none;color:var(--ac2)}
+.cx-info .r span{flex:1;opacity:.88}
+.cx-info .r .ch{opacity:.4;width:14px;height:14px}
+.cx-soc{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.cx-soc a{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 6px;border-radius:16px;background:var(--soft);border:1px solid var(--line);color:var(--cfg);text-decoration:none;font-size:12.5px;font-weight:600}
+.cx-soc a svg{width:20px;height:20px;color:var(--ac2)}
+.cx-terms{margin-top:14px;font-size:12.5px;opacity:.6;text-align:center;line-height:1.7}
+.cx-foot{text-align:center;margin-top:22px;font-size:11.5px;opacity:.4;letter-spacing:.08em}
+/* buttons */
+.cx-btn{all:unset;box-sizing:border-box;display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px 18px;border-radius:16px;cursor:pointer;font-weight:800;font-size:16px;text-align:center;
+  background:linear-gradient(135deg,var(--ac2),var(--cac));color:var(--cbg);box-shadow:0 12px 30px -12px color-mix(in srgb,var(--cac) 80%,transparent);transition:transform .15s}
+.cx-btn:active{transform:scale(.98)}
+.cx-btn.ghost{background:transparent;color:var(--cfg);border:1px solid var(--line);box-shadow:none;font-weight:700}
+.cx-btn svg{width:18px;height:18px}
+/* confirm sheet */
+.cx-sheet{position:fixed;inset:0;z-index:100;display:flex;align-items:flex-end;justify-content:center;padding:12px;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);animation:fd .2s}
+@keyframes fd{from{opacity:0}}
+.cx-sheet .box{width:100%;max-width:460px;border-radius:26px;padding:26px 20px 18px;text-align:center;background:color-mix(in srgb,var(--cbg) 92%,var(--cac));border:1px solid color-mix(in srgb,var(--cac) 35%,transparent);
+  animation:up .35s cubic-bezier(.2,.8,.2,1);box-shadow:0 -10px 60px -10px color-mix(in srgb,var(--cac) 40%,transparent)}
+@keyframes up{from{transform:translateY(60px);opacity:0}}
+.cx-sheet .big{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;width:110px;height:110px;border-radius:28px;background:linear-gradient(160deg,var(--ac2),var(--cac));color:var(--cbg);box-shadow:0 14px 34px -12px var(--cac)}
+.cx-sheet .big b{font-size:34px;font-weight:800;direction:ltr;line-height:1}.cx-sheet .big small{font-weight:700;font-size:13px;margin-top:6px}
+.cx-sheet h2{font-family:"El Messiri",serif;font-size:22px;margin:16px 0 4px}
+.cx-sheet p{margin:0;opacity:.75;font-size:14px}
+.cx-sheet .warn{display:flex;gap:10px;align-items:flex-start;text-align:right;margin:18px 0;padding:12px 14px;border-radius:14px;background:var(--soft);border:1px solid var(--line);font-size:13.5px;opacity:1}
+.cx-sheet .warn svg{width:18px;height:18px;flex:none;color:var(--ac2);margin-top:2px}
+.cx-sheet .cx-btn+.cx-btn{margin-top:8px}
+/* result ticket */
+.cx-res{text-align:center}
+.cx-res h1{font-family:"El Messiri",serif;font-size:28px;margin:6px 0 4px}
+.cx-res .lead{opacity:.75;margin:0 0 20px;font-size:14.5px}
+.rt{position:relative;border-radius:24px;overflow:hidden;background:linear-gradient(160deg,color-mix(in srgb,var(--cac) 28%,var(--cbg)),color-mix(in srgb,var(--cac) 10%,var(--cbg)));
+  border:1px solid color-mix(in srgb,var(--cac) 40%,transparent);box-shadow:0 26px 60px -24px color-mix(in srgb,var(--cac) 70%,transparent);text-align:center}
+.rt-top{padding:22px 18px 18px}
+.rt-top .from{font-size:12px;letter-spacing:.06em;opacity:.7}
+.rt-top .val{font-size:52px;font-weight:800;line-height:1.1;margin:6px 0 2px;direction:ltr;background:linear-gradient(180deg,#fff,var(--ac2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.rt-top .ttl{font-weight:800;font-size:17px}
+.rt-perf{position:relative;height:0;border-top:2px dashed color-mix(in srgb,var(--cfg) 22%,transparent);margin:0 18px}
+.rt-perf::before,.rt-perf::after{content:"";position:absolute;top:-12px;width:22px;height:22px;border-radius:50%;background:var(--cbg)}
+.rt-perf::before{left:-30px}.rt-perf::after{right:-30px}
+.rt-code{padding:18px}
+.rt-code .lbl{font-size:12px;opacity:.65;margin-bottom:8px}
+.rt-code .cd{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 12px 12px 16px;border-radius:14px;background:color-mix(in srgb,var(--cbg) 55%,transparent);border:1px solid var(--line)}
+.rt-code .cd code{font-family:ui-monospace,Menlo,monospace;font-size:26px;font-weight:800;letter-spacing:.14em;color:var(--cfg);direction:ltr}
+.rt-code .cp{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;padding:9px 12px;border-radius:11px;background:var(--cac);color:var(--cbg);font-weight:800;font-size:13px}
+.rt-code .cp svg{width:15px;height:15px}
+.rt-code .st{font-size:12.5px;margin-top:9px;color:var(--ac2);font-weight:700;min-height:18px}
+.cx-go{display:flex;align-items:center;gap:14px;margin:20px 0 12px;padding:14px 16px;border-radius:18px;background:var(--soft);border:1px solid var(--line);text-align:right}
+.cx-go .ring{flex:none;width:52px;height:52px;position:relative}
+.cx-go .ring svg{width:52px;height:52px;transform:rotate(-90deg)}
+.cx-go .ring b{position:absolute;inset:0;display:grid;place-items:center;font-size:17px;font-weight:800}
+.cx-go .t{flex:1;font-size:13.5px;line-height:1.6}
+.cx-go .t small{display:block;opacity:.6}
+.cx-go .stay{all:unset;cursor:pointer;font-size:12.5px;font-weight:700;opacity:.7;text-decoration:underline}
+.cx-btn.wa{background:linear-gradient(135deg,#3BD16F,#1FA855);color:#fff;box-shadow:0 12px 30px -12px rgba(31,168,85,.7)}
+.cx-btn[disabled]{opacity:.6}
+.rt-top .dsc{font-size:13px;opacity:.7;margin-top:6px}
+.rt-code.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rt-code.two>div{padding:12px 8px;border-radius:14px;background:color-mix(in srgb,var(--cbg) 55%,transparent);border:1px solid var(--line)}
+.rt-code.two code{display:block;font-family:ui-monospace,Menlo,monospace;font-size:21px;font-weight:800;letter-spacing:.08em;direction:ltr;color:var(--cfg)}
+.rt-code.two code.ref{color:var(--ac2)}
+.cx-note{display:flex;gap:12px;align-items:flex-start;text-align:right;margin-top:16px;padding:14px 16px;border-radius:16px;background:color-mix(in srgb,var(--cac) 10%,transparent);border:1px solid color-mix(in srgb,var(--cac) 30%,transparent);font-size:13.5px;line-height:1.7}
+.cx-note svg{width:20px;height:20px;flex:none;color:var(--ac2);margin-top:3px}.cx-note b{display:block;font-size:14px}
+.cx-steps{list-style:none;padding:0;margin:20px 0 0;text-align:right;counter-reset:s}
+.cx-steps li{counter-increment:s;display:flex;gap:12px;align-items:center;padding:11px 0;font-size:14px;border-bottom:1px solid var(--line)}
+.cx-steps li:last-child{border:0}
+.cx-steps li::before{content:counter(s);flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:13px;background:color-mix(in srgb,var(--cac) 20%,transparent);color:var(--ac2)}
+.cx-steps li.ok::before{content:"✓";background:var(--cac);color:var(--cbg)}
+#cxConf{position:fixed;inset:0;pointer-events:none;z-index:150}
+.cust .prev-badge{position:fixed;top:10px;left:10px;background:#E2B13C;color:#000;font-weight:800;font-size:12px;padding:4px 10px;border-radius:99px;z-index:300}
+.tk-exp{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;color:color-mix(in srgb,var(--cfg) 65%,transparent);margin-top:2px}
+.tk-exp svg{width:13px;height:13px}
+.tk-exp.soon{color:var(--ac2)}
+.tk-exp.soon::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--cac);animation:blink 1.4s infinite}
+@keyframes blink{50%{opacity:.25}}
+.cx-field{text-align:right;margin:4px 0 6px}
+.cx-field label{display:block;font-size:13px;font-weight:700;margin-bottom:6px;opacity:.85}
+.cx-field input{width:100%;box-sizing:border-box;font:inherit;font-size:18px;font-weight:700;letter-spacing:.08em;text-align:center;direction:ltr;padding:12px;border-radius:14px;border:1px solid var(--line);background:color-mix(in srgb,var(--cbg) 60%,transparent);color:var(--cfg);outline:none}
+.cx-field input:focus{border-color:var(--cac)}
+.cx-field small{display:block;font-size:11.5px;opacity:.6;margin-top:5px}
+.cx-err{color:#FF9B9B;font-size:12.5px;min-height:16px;margin-top:4px}
+.rt-code.three{grid-template-columns:1fr 1fr}
+.rt-code .card{grid-column:1/-1}
+.rt-exp{font-size:12.5px;margin-top:8px;color:var(--ac2);font-weight:700}
+.cx-empty{text-align:center;padding:26px 18px}
+#toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(30px);background:#111;color:#fff;padding:11px 18px;border-radius:12px;font-weight:600;opacity:0;transition:.25s;z-index:999;max-width:90vw;text-align:center;pointer-events:none;font-family:Tajawal}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+</style>
+</head>
+<body>
+<div id="app" class="cust"><div class="cx-bg"></div></div>
+<script src="shared.js"></script>
+<script>
+/* صفحة العميلات */
+const PREVIEW=location.hash==='#preview';let CFG=null,LOCK_KEY='',tickT=null;
+const root=document.getElementById('app');
+function lockKey(){return'offer_lock_'+CFG.campaignId+(PREVIEW?'_pv':'')}
+function expLabel(o,cls=''){const e=offerExpiry(CFG,o);if(!e)return'';const left=e-Date.now();
+  if(left<=7*864e5)return`<span class="tk-exp soon ${cls}" data-exp="${e.getTime()}">ينتهي خلال ${leftText(left)}</span>`;
+  return`<span class="tk-exp ${cls}">${IC.clock.replace('<svg','<svg width="13" height="13"')} صالح حتى ${fmtDate(e)}</span>`}
+function startTick(){clearInterval(tickT);tickT=setInterval(()=>{$$('[data-exp]').forEach(el=>{const l=+el.dataset.exp-Date.now();if(l<=0){render();return}el.textContent='ينتهي خلال '+leftText(l)})},30000)}
+const previewBar=()=>PREVIEW?'<div class="prev-badge">معاينة — اختيارك هنا ما يُحسب</div>':'';
+const previewTools=()=>PREVIEW?`<div style="display:grid;gap:8px;margin-top:18px"><button class="cx-btn ghost" id="pvReset">إعادة المعاينة</button><a class="cx-btn ghost" href="index.html#admin">رجوع للوحة</a></div>`:'';
+function bindPreview(){const r=$('#pvReset');if(r)r.onclick=()=>{LS.del(lockKey());render()}}
+
+function render(){const lock=LS.get(lockKey(),null);
+  if(lock){const o=CFG.offers.find(x=>x.id===lock.id)||lock.offer;if(o){showTicket(o,lock,false);return}}
+  showList()}
+
+function showList(){const offers=CFG.offers.filter(o=>o.active&&!isExpired(CFG,o));const choose=gF(CFG,'اختر','اختاري');
+  root.innerHTML=`<div class="cx-bg"></div>${previewBar()}<main class="cx-in">${cxHero(CFG)}
+   <section class="cx-gift rv" style="--d:.25s"><i class="rib"></i><i class="rib2"></i><span class="k">${IC.gift.replace('<svg','<svg width="14" height="14"')} ${esc(CFG.giftLabel||'هدية حاملة البطاقة')}</span>
+     <h1>${esc(CFG.headline)}</h1>${CFG.subheadline?`<p>${esc(CFG.subheadline)}</p>`:''}</section>
+   ${offers.length?`<div class="cx-st rv" style="--d:.32s"><b>${choose} هديتك</b><small>خصم واحد لكل بطاقة</small></div>`+offers.map((o,i)=>{const v=splitVal(o.value);return`<button class="tk rv" style="--d:${.38+i*.07}s" data-o="${esc(o.id)}">
+       <div class="tk-v"><b>${esc(v.b)}</b>${v.s?`<small>${esc(v.s)}</small>`:''}</div><div class="tk-cut"></div>
+       <div class="tk-b"><div class="tk-t">${esc(o.title)}</div>${o.desc?`<div class="tk-d">${esc(o.desc)}</div>`:''}${expLabel(o)}<span class="tk-go">${choose} هذا الخصم ${IC.arrow}</span></div></button>`}).join('')
+    :`<div class="cx-gift cx-empty"><h1 style="font-size:21px">انتهت عروض هذي البطاقة</h1><p>${gF(CFG,'تابعنا','تابعينا')} على الواتساب والانستقرام لعروضنا الجديدة ✨</p></div>`}
+   <div class="cx-how rv" style="--d:.5s"><div><i>${IC.tap}</i>${choose} خصمك</div><div><i>${IC.wa}</i>${gF(CFG,'أرسله','أرسليه')} على الواتساب</div><div><i>${IC.gift}</i>${gF(CFG,'سلّم','سلّمي')} البطاقة عند الزيارة</div></div>
+   ${cxFooter(CFG)}${previewTools()}</main>`;
+  bindPreview();startTick();
+  $$('.tk').forEach(b=>b.onclick=()=>confirmSheet(offers.find(x=>x.id===b.dataset.o)))}
+
+function confirmSheet(o){const v=splitVal(o.value);const cardMode=CFG.cardNumber||'optional';const sh=document.createElement('div');sh.className='cx-sheet';
+  sh.innerHTML=`<div class="box"><div class="big"><b>${esc(v.b)}</b>${v.s?`<small>${esc(v.s)}</small>`:''}</div><h2>${esc(o.title)}</h2>${o.desc?`<p>${esc(o.desc)}</p>`:''}
+    ${cardMode!=='off'?`<div class="cx-field" style="margin-top:16px"><label>رقم البطاقة ${cardMode==='required'?'':'(اختياري)'}</label><input id="cardNo" inputmode="numeric" autocomplete="off" placeholder="مثال: 0157" maxlength="12"><small>الرقم المطبوع على ${gF(CFG,'بطاقتك','بطاقتك')}</small><div class="cx-err" id="cardErr"></div></div>`:''}
+    <div class="warn">${IC.shield}<div>${gF(CFG,'تقدر تختار خصم واحد بس، وبعد التأكيد ما تقدر تغيّره.','تقدرين تختارين خصم واحد بس، وبعد التأكيد ما تقدرين تغيّرينه.')}</div></div>
+    <button class="cx-btn" id="cf">${IC.check} ${gF(CFG,'أكّد واستلم القسيمة','أكّدي واستلمي القسيمة')}</button><button class="cx-btn ghost" id="cx">أبي خصم ثاني</button></div>`;
+  root.appendChild(sh);sh.onclick=e=>{if(e.target===sh)sh.remove()};sh.querySelector('#cx').onclick=()=>sh.remove();
+  sh.querySelector('#cf').onclick=()=>{let card='';const inp=sh.querySelector('#cardNo');
+    if(inp){card=inp.value.replace(/[^\d٠-٩A-Za-z-]/g,'').trim();if(cardMode==='required'&&card.length<2){sh.querySelector('#cardErr').textContent=gF(CFG,'اكتب رقم البطاقة','اكتبي رقم البطاقة');inp.focus();return}}
+    const lock={id:o.id,offer:o,n:o.n,ref:makeRef(CFG,o.n),card,at:Date.now()};LS.set(lockKey(),lock);sh.remove();track('chose/'+(o.code||o.n),o.title);showTicket(o,lock,true);confetti(CFG)}}
+
+function waMsg(o,lock){const e=offerExpiry(CFG,o);return[`السلام عليكم 🌸`,`اخترت خصم بطاقة ${CFG.salonName}:`,`🎁 ${o.value} — ${o.title}`,o.desc?`(${o.desc})`:'',
+  `الكود: ${o.code}`,`رقم القسيمة: ${lock.ref}`,lock.card?`رقم البطاقة: ${lock.card}`:'',e?`صالحة حتى: ${fmtDate(e)}`:'',`أبغى أحجز موعد، وبسلّم البطاقة عند الزيارة.`].filter(Boolean).join('\n')}
+
+function showTicket(o,lock,fresh){if(!lock.ref){lock.ref=makeRef(CFG,o.n||1);LS.set(lockKey(),lock)}const v=splitVal(o.value),e=offerExpiry(CFG,o),expired=isExpired(CFG,o);
+  root.innerHTML=`<div class="cx-bg"></div>${previewBar()}<main class="cx-in cx-res">${cxHero(CFG)}
+   <h1 class="rv" style="--d:.2s">${expired?'انتهت صلاحية هديتك':fresh?'مبروك! هديتك جاهزة':'هديتك المختارة'}</h1>
+   <p class="lead rv" style="--d:.25s">${expired?'هذا العرض انتهى، ' + gF(CFG,'تواصل','تواصلي')+' معنا على الواتساب لمعرفة العروض الجديدة':gF(CFG,'أرسل القسيمة لنا على الواتساب ونحجز لك موعدك','أرسلي القسيمة لنا على الواتساب ونحجز لك موعدك')}</p>
+   <div class="rt rv" style="--d:.3s"><div class="rt-top"><div class="from">قسيمة خصم لحاملة البطاقة</div><div class="val">${esc(v.b)}</div><div class="ttl">${esc(v.s?v.s+' — ':'')}${esc(o.title)}</div>${o.desc?`<div class="dsc">${esc(o.desc)}</div>`:''}
+       ${e?`<div class="rt-exp">${expired?'انتهت في '+fmtDate(e):'صالحة حتى '+fmtDate(e)}</div>`:''}</div>
+     <div class="rt-perf"></div><div class="rt-code two"><div><div class="lbl">الكود</div><code>${esc(o.code)}</code></div><div><div class="lbl">رقم القسيمة</div><code class="ref">${esc(lock.ref)}</code></div>
+       ${lock.card?`<div class="card"><div class="lbl">رقم البطاقة</div><code>${esc(lock.card)}</code></div>`:''}</div></div>
+   ${expired?'':`<button class="cx-btn wa rv" style="--d:.38s;margin-top:20px" id="waBtn">${IC.wa} ${gF(CFG,'أرسل القسيمة على الواتساب','أرسلي القسيمة على الواتساب')}</button>
+   <button class="cx-btn ghost rv" style="--d:.42s;margin-top:8px" id="svBtn">${IC.copy} ${gF(CFG,'احفظ صورة القسيمة','احفظي صورة القسيمة')}</button>`}
+   <div class="cx-note rv" style="--d:.46s">${IC.shield}<div><b>شرط الخصم</b>الخصم لحاملة البطاقة فقط، ويُشترط تسليم البطاقة عند الزيارة. خصم واحد لكل بطاقة ولا يُجمع مع عروض أخرى.</div></div>
+   <ol class="cx-steps rv" style="--d:.5s"><li class="${lock.sent?'ok':''}">${gF(CFG,'أرسل','أرسلي')} القسيمة لنا على الواتساب</li><li>نحجز لك الموعد المناسب ونأكده لك</li><li>${gF(CFG,'سلّم','سلّمي')} البطاقة عند زيارتك ويُطبَّق الخصم</li></ol>
+   ${cxFooter(CFG)}${previewTools()}</main>`;
+  bindPreview();if(expired)return;
+  $('#waBtn').onclick=async ev=>{const b=ev.currentTarget;b.disabled=true;const text=waMsg(o,lock);let done=false;
+    try{const cv=await ticketImage(CFG,o,lock.ref,{card:lock.card,exp:e});const blob=await canvasBlob(cv);const file=new File([blob],`قسيمة-${lock.ref}.png`,{type:'image/png'});
+      if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],text});done=true}}catch(err){if(err&&err.name==='AbortError'){b.disabled=false;return}}
+    lock.sent=true;LS.set(lockKey(),lock);$('.cx-steps li').classList.add('ok');track('whatsapp/'+(o.code||o.n),'إرسال واتساب');b.disabled=false;if(!done)location.href=waLink(CFG.contacts.whatsapp,text)};
+  $('#svBtn').onclick=async()=>{const cv=await ticketImage(CFG,o,lock.ref,{card:lock.card,exp:e});saveFile(`قسيمة-${lock.ref}.png`,await canvasBlob(cv))}}
+
+(async function(){CFG=await loadConfig(PREVIEW);const r=document.documentElement;r.style.setProperty('--cbg',CFG.theme.bg);root.style.setProperty('--cbg',CFG.theme.bg);root.style.setProperty('--cfg',CFG.theme.fg);root.style.setProperty('--cac',CFG.theme.accent);
+  document.body.style.background=CFG.theme.bg;document.title=CFG.salonName+' — '+(CFG.headline||'خصمك الخاص');const m=document.querySelector('meta[name=theme-color]');if(m)m.content=CFG.theme.bg;
+  if(!PREVIEW)initAnalytics(CFG,'/offers');render();
+  window.addEventListener('hashchange',()=>location.reload())})();
+
+</script>
+</body>
+</html>
